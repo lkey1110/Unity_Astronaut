@@ -24,6 +24,7 @@ namespace Lkey.TwoD
         private Rigidbody2D rig;
         private Animator ani;
         private string parRun = "on/off run";
+        private string parJump = "on/off jump";
 
         private void OnDrawGizmos()
         {
@@ -32,21 +33,16 @@ namespace Lkey.TwoD
         }
         private void Awake()
         {
-           // print("<color=yellow>喚醒事件</color>");
-
             rig = GetComponent<Rigidbody2D>();
             ani = GetComponent<Animator>();
         }
         private void Start()
         {
-            //print("<color=yellow>開始事件</color>");
+       
         }
         private void Update()
         {
-            //print("<color=yellow>更新事件</color>");
-
             MoveAndFlip();
-            //CheckGround();
             Jump();
         }
 
@@ -55,38 +51,44 @@ namespace Lkey.TwoD
         /// </summary>
         private void MoveAndFlip()
         {
-            //float v = Input.GetAxis("Vertiacl");
-            //print("<color=#f66>垂直的值:" + v + "</color>");
-
             float h = Input.GetAxis("Horizontal");
             rig.velocity = new Vector2(h * moveSpeed, rig.velocity.y);
 
-            if (Input.GetKeyDown(KeyCode.A))
+            //if (input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            if (h < 0)
             {
-                print("按下A");
                 transform.eulerAngles = Vector3.zero;
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+
+            //else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)
+            else if (h > 0)
             {
-                print("按下D");
                 transform.eulerAngles = new Vector3(0, 180, 0);
             }
 
             ani.SetBool(parRun, h != 0);
         }
 
+        /// <summary>
+        /// 判定是否在地面並且按空白見跳躍
+        /// </summary>
         private void Jump()
         {
-            if (CheckGround() && Input.GetKeyDown(KeyCode.space))
+            if (CheckGround() && Input.GetKeyUp(KeyCode.Space))
             {
                 rig.AddForce(new Vector2(0, jumpPower));
             }
         }
 
+        /// <summary>
+        /// 檢查角色是否在地版
+        /// </summary>
+        /// <returns>是否在地版</returns>
         private bool CheckGround()
         {
             Collider2D hit = Physics2D.OverlapBox(transform.position + v3CheckGroundoffset, v3CheckGroundSize, 0, layerCheckGround);
-            //print($"<color~#69f>碰到的物件 : {hit.name}</color>");
+
+            ani.SetBool(parJump, !hit);
             return hit;
         }
     }
