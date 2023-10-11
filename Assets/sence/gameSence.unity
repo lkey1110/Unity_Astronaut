@@ -6085,6 +6085,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
+  v3CheckGroundSize: {x: 1, y: 0.11, z: 1}
+  v3CheckGroundoffset: {x: 0, y: 0.02, z: 0}
+  layerCheckGround:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!70 &1112413356
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -7476,7 +7481,7 @@ GameObject:
   - component: {fileID: 1947229612}
   - component: {fileID: 1947229611}
   - component: {fileID: 1947229610}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
