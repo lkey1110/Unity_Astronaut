@@ -6090,6 +6090,7 @@ MonoBehaviour:
   layerCheckGround:
     serializedVersion: 2
     m_Bits: 8
+  jumpPower: 1000
 --- !u!70 &1112413356
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
