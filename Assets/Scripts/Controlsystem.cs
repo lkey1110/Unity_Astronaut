@@ -43,6 +43,7 @@ namespace Lkey.TwoD
         private void Update()
         {
             MoveAndFlip();
+            CheckGround();
             Jump();
         }
 

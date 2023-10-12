@@ -5433,7 +5433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534275885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.25, y: -0.32999992, z: -10}
+  m_LocalPosition: {x: 7.284672, y: -0.3300004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6085,12 +6085,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  v3CheckGroundSize: {x: 1, y: 0.11, z: 1}
-  v3CheckGroundoffset: {x: 0, y: 0.02, z: 0}
+  v3CheckGroundSize: {x: 0.88, y: 0.17, z: 0}
+  v3CheckGroundoffset: {x: 0, y: 0.05, z: 0}
   layerCheckGround:
     serializedVersion: 2
     m_Bits: 8
-  jumpPower: 1000
+  jumpPower: 500
 --- !u!70 &1112413356
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
