@@ -10,6 +10,7 @@ namespace Lkey.TwoD
     /// </summary>
     public class C : MonoBehaviour
     {
+        #region 資料
         [SerializeField, Header("移動速度"), Range(0, 50)]
         private float moveSpeed = 3.5f;
         [SerializeField, Header("檢查地板尺寸")]
@@ -25,6 +26,7 @@ namespace Lkey.TwoD
         private Animator ani;
         private string parRun = "on/off run";
         private string parJump = "on/off jump";
+        #endregion
 
         private void OnDrawGizmos()
         {
