@@ -26,12 +26,15 @@ namespace Lkey
         public override State RunCurrentState()
         {
             timer += Time.deltaTime;
-            print($"<color=#69f>計時器 :{timer}</color>");
+           // print($"<color=#69f>計時器 :{timer}</color>");
 
             if (timer >= timeIdle) starWander = true;
 
             if (starWander)
             {
+                timer = 0;
+                starWander = false;
+                timeIdle = Random.Range(rangeIdleTime.x, rangeIdleTime.y);
                 return stateWander;
             }
 

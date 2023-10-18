@@ -73,6 +73,10 @@ namespace Lkey
 
             if (starIdle)
             {
+                timer = 0;
+                starIdle = false;
+                timeWander = Random.Range(rangeWanderTime.x, rangeWanderTime.y);
+                rig.velocity = Vector3.zero;
                 return stateIdle;
             }
 
