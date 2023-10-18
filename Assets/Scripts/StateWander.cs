@@ -33,6 +33,15 @@ namespace Lkey
         [SerializeField, Header("等待狀態的隨機時間範圍")]
         private Vector2 rangeWanderTime = new Vector2(0, 10);
 
+        [Header("追蹤區域資料")]
+        [SerializeField]
+        private Vector3 trackSize = Vector3.one;
+        [SerializeField]
+        private Vector3 trackOffset;
+
+        [SerializeField, Header("追蹤狀態")]
+        private StateTrack stateTrack;
+
         private float timeWander;
         private float timer;
 
@@ -41,6 +50,9 @@ namespace Lkey
             Gizmos.color = new Color(0, 0.8f, 0.9f, 0.5f);
             Gizmos.DrawSphere(pointLeft, 0.1f);
             Gizmos.DrawSphere(pointRight, 0.1f);
+
+            Gizmos.color = new Color(1, 0.8f, 0.5f, 0.5f);
+            Gizmos.DrawCube(transform.position + transform.TransformDirection(trackOffset), trackSize);
         }
 
         private void Start()
@@ -50,6 +62,50 @@ namespace Lkey
         }
 
         public override State RunCurrentState()
+        {
+            MoveAndFlip();
+            TrackTarget();
+
+            timer += Time.deltaTime;
+            // print($"<color=#69f>計時器 :{timer}</color>");
+
+            if (timer >= timeWander) starIdle = true;
+
+            if (TrackTarget())
+            {
+                ResetState();
+                return stateTrack;
+            }
+
+            else if (starIdle)
+            {
+                ResetState();
+                return stateIdle;
+            }
+
+            else
+            {
+                return this;
+            }
+        }
+
+        /// <summary>
+        /// 追蹤目標物件
+        /// </summary>
+        /// <returns>是否有追蹤物件進入區域</returns>
+        public bool TrackTarget()
+        {
+            Collider2D hit = Physics2D.OverlapBox(transform.position + transform.TransformDirection(trackOffset), trackSize, 0, layerTarget);
+            //print(hit.name);
+
+            return hit;
+        }
+
+
+        /// <summary>
+        /// 移動與翻面
+        /// </summary>
+        private void MoveAndFlip()
         {
             if (Vector3.Distance(transform.position, pointRight) < 0.1f)
             {
@@ -64,30 +120,20 @@ namespace Lkey
 
             rig.velocity = new Vector2(direction * speed, rig.velocity.y);
             ani.SetBool(parWalk, true);
-
-
-            timer += Time.deltaTime;
-            // print($"<color=#69f>計時器 :{timer}</color>");
-
-            if (timer >= timeWander) starIdle = true;
-
-            if (starIdle)
-            {
-                timer = 0;
-                starIdle = false;
-                timeWander = Random.Range(rangeWanderTime.x, rangeWanderTime.y);
-                rig.velocity = Vector3.zero;
-                return stateIdle;
-            }
-
-            else
-            {
-                return this;
-            }
+        }
+        /// <summary>
+        /// 重設狀態資料
+        /// </summary>
+        private void ResetState()
+        {
+            timer = 0;
+            starIdle = false;
+            timeWander = Random.Range(rangeWanderTime.x, rangeWanderTime.y);
+            rig.velocity = Vector3.zero;
+            ani.SetBool(parWalk, true);
         }
 
-            
-        
+
 
         [ContextMenu("取得角色的原始座標")]
         private void GetOriginalPoint()

@@ -13,6 +13,8 @@ namespace Lkey
         private bool starWander;
         [SerializeField, Header("等待狀態的時間範圍")]
         private Vector2 rangeIdleTime = new Vector2(0, 3);
+        [SerializeField, Header("追蹤狀態")]
+        private StateTrack stateTrack;
 
         private float timeIdle;
         private float timer;
@@ -20,7 +22,7 @@ namespace Lkey
         private void Start()
         {
             timeIdle = Random.Range(rangeIdleTime.x, rangeIdleTime.y);
-            print($"<color=#d6f>隨機等待時間 : {timeIdle}</color>");
+            //print($"<color=#d6f>隨機等待時間 : {timeIdle}</color>");
         }
 
         public override State RunCurrentState()
@@ -30,7 +32,13 @@ namespace Lkey
 
             if (timer >= timeIdle) starWander = true;
 
-            if (starWander)
+            if (stateWander.TrackTarget())
+            {
+                
+                return stateTrack;
+            }
+
+            else if (starWander)
             {
                 timer = 0;
                 starWander = false;
