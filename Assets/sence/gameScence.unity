@@ -8568,8 +8568,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   stateWander: {fileID: 1841487249}
-  starWander: 0
+  starWander: 1
   rangeIdleTime: {x: 0, y: 3}
+  stateTrack: {fileID: 1841487250}
 --- !u!114 &1841487252
 MonoBehaviour:
   m_ObjectHideFlags: 0

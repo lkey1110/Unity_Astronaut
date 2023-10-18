@@ -1,4 +1,5 @@
 ﻿
+using Fungus;
 using UnityEngine;
 namespace Lkey
 {
@@ -34,15 +35,13 @@ namespace Lkey
 
             if (stateWander.TrackTarget())
             {
-                
+               ResetState();
                 return stateTrack;
             }
 
             else if (starWander)
             {
-                timer = 0;
-                starWander = false;
-                timeIdle = Random.Range(rangeIdleTime.x, rangeIdleTime.y);
+                ResetState();
                 return stateWander;
             }
 
@@ -50,6 +49,13 @@ namespace Lkey
             {
                 return this;
             }
+        }
+
+        private void ResetState()
+        {
+            timer = 0;
+            starWander = false;
+            timeIdle = Random.Range(rangeIdleTime.x, rangeIdleTime.y);
         }
     }
 }

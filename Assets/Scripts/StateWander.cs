@@ -96,8 +96,7 @@ namespace Lkey
         public bool TrackTarget()
         {
             Collider2D hit = Physics2D.OverlapBox(transform.position + transform.TransformDirection(trackOffset), trackSize, 0, layerTarget);
-            //print(hit.name);
-
+           
             return hit;
         }
 
