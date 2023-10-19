@@ -133,7 +133,7 @@ namespace Lkey
             starIdle = false;
             timeWander = Random.Range(rangeWanderTime.x, rangeWanderTime.y);
             rig.velocity = Vector3.zero;
-            ani.SetBool(parWalk, true);
+            ani.SetBool(parWalk, false);
         }
 
 

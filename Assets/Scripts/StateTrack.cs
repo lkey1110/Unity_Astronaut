@@ -8,6 +8,7 @@ namespace Lkey
     {
         [SerializeField, Header("追蹤速度"), Range(0, 5)]
         private float speed = 3.5f;
+
         [SerializeField, Header("遊走狀態")]
         private StateWander stateWander;
 
@@ -17,6 +18,8 @@ namespace Lkey
         [SerializeField]
         private Vector3 attackOffset;
 
+        [SerializeField, Header("攻擊狀態")]
+        private StateAttack stateAttack;
 
         private Rigidbody2D rig;
         private string parWalk = "開關走路";
@@ -36,10 +39,21 @@ namespace Lkey
         {
             if (stateWander.TrackTarget())
             {
-                ani.SetBool(parWalk, true);
-                ani.speed = 2.5f;
-                rig.velocity = new Vector2(speed * stateWander.direction, rig.velocity.y);
-                return this;
+                if (!AttackTarget())
+                {
+                    ani.SetBool(parWalk, false);
+                    ani.speed = 2.5f;
+                    rig.velocity = new Vector2(speed * stateWander.direction, rig.velocity.y);
+
+                    return this;
+                }
+
+                else
+                {
+                    ResetState();
+                    return stateAttack;
+                }
+            
             }
             else 
             {
@@ -50,7 +64,7 @@ namespace Lkey
 
         private void ResetState()
         {
-            ani.SetBool(parWalk, false);
+            ani.SetBool(parWalk, true);
             ani.speed = 1f;
             rig.velocity = Vector3.zero;
         }

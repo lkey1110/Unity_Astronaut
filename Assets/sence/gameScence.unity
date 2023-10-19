@@ -1421,8 +1421,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  v3CheckGroundSize: {x: 0.88, y: 0.17, z: 0}
-  v3CheckGroundoffset: {x: 0, y: 0.05, z: 0}
+  v3CheckGroundSize: {x: 1, y: 0.44, z: 0}
+  v3CheckGroundoffset: {x: 0, y: 0.01, z: 0}
   layerCheckGround:
     serializedVersion: 2
     m_Bits: 8
@@ -1459,8 +1459,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.23}
-  m_Size: {x: 1.26, y: 2.21}
+  m_Offset: {x: 0, y: 1.5}
+  m_Size: {x: 2, y: 3}
   m_Direction: 0
 --- !u!50 &1112413357
 Rigidbody2D:
@@ -8533,10 +8533,10 @@ MonoBehaviour:
   speed: 1.5
   direction: 1
   stateIdle: {fileID: 1841487251}
-  starIdle: 0
+  starIdle: 1
   rangeWanderTime: {x: 0, y: 10}
-  trackSize: {x: 4, y: 2.2, z: 1}
-  trackOffset: {x: 2, y: -0.3, z: 0}
+  trackSize: {x: 4, y: 2, z: 1}
+  trackOffset: {x: 2, y: 0, z: 0}
   stateTrack: {fileID: 1841487250}
 --- !u!114 &1841487250
 MonoBehaviour:
@@ -8552,11 +8552,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <layerTarget>k__BackingField:
     serializedVersion: 2
-    m_Bits: 0
-  speed: 3.5
+    m_Bits: 64
+  speed: 5
   stateWander: {fileID: 1841487249}
-  attackSize: {x: 2.41, y: 2.53, z: 1}
-  attackOffset: {x: 0.76, y: 0, z: 0}
+  attackSize: {x: 2, y: 2, z: 1}
+  attackOffset: {x: 1, y: 0, z: 0}
+  stateAttack: {fileID: 1841487253}
 --- !u!114 &1841487251
 MonoBehaviour:
   m_ObjectHideFlags: 0
