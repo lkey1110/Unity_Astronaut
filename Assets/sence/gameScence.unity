@@ -8531,6 +8531,7 @@ MonoBehaviour:
   offsetLeft: -2
   offsetRight: 2
   speed: 1.5
+  direction: 1
   stateIdle: {fileID: 1841487251}
   starIdle: 0
   rangeWanderTime: {x: 0, y: 10}
@@ -8552,6 +8553,8 @@ MonoBehaviour:
   <layerTarget>k__BackingField:
     serializedVersion: 2
     m_Bits: 0
+  speed: 3.5
+  stateWander: {fileID: 1841487249}
 --- !u!114 &1841487251
 MonoBehaviour:
   m_ObjectHideFlags: 0

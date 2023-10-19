@@ -17,7 +17,7 @@ namespace Lkey
         /// <summary>
         /// 方向:右邊+1，左邊-1
         /// </summary>
-        private int direction = 1;
+        public int direction = 1;
 
 
         private Vector3 pointLeft => pointOriginal + Vector3.right * offsetLeft;
@@ -97,7 +97,11 @@ namespace Lkey
         {
             Collider2D hit = Physics2D.OverlapBox(transform.position + transform.TransformDirection(trackOffset), trackSize, 0, layerTarget);
            
-            return hit;
+            if(!hit) return false;
+
+            if (hit.transform.position.x > pointLeft.x && hit.transform.position.x < pointRight.x) return hit;
+
+            return false;
         }
 
 
