@@ -928,6 +928,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointOriginal: {x: -1.0131195, y: -2.62, z: 0}
+  offsetLeft: -6
+  offsetRight: 6
+  speed: 1.5
 --- !u!114 &641777290
 MonoBehaviour:
   m_ObjectHideFlags: 0
