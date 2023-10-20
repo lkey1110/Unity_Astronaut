@@ -35,7 +35,7 @@ namespace Lkey
 
             if (stateWander.TrackTarget())
             {
-               ResetState();
+                ResetState();
                 return stateTrack;
             }
 

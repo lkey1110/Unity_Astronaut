@@ -96,7 +96,6 @@ namespace Lkey
         public bool TrackTarget()
         {
             Collider2D hit = Physics2D.OverlapBox(transform.position + transform.TransformDirection(trackOffset), trackSize, 0, layerTarget);
-           
             if(!hit) return false;
 
             if (hit.transform.position.x > pointLeft.x && hit.transform.position.x < pointRight.x) return hit;
@@ -104,6 +103,17 @@ namespace Lkey
             return false;
         }
 
+        /// <summary>
+        /// 重設狀態資料
+        /// </summary>
+        private void ResetState()
+        {
+            timer = 0;
+            starIdle = false;
+            timeWander = Random.Range(rangeWanderTime.x, rangeWanderTime.y);
+            rig.velocity = Vector3.zero;
+            ani.SetBool(parWalk, false);
+        }
 
         /// <summary>
         /// 移動與翻面
@@ -123,17 +133,6 @@ namespace Lkey
 
             rig.velocity = new Vector2(direction * speed, rig.velocity.y);
             ani.SetBool(parWalk, true);
-        }
-        /// <summary>
-        /// 重設狀態資料
-        /// </summary>
-        private void ResetState()
-        {
-            timer = 0;
-            starIdle = false;
-            timeWander = Random.Range(rangeWanderTime.x, rangeWanderTime.y);
-            rig.velocity = Vector3.zero;
-            ani.SetBool(parWalk, false);
         }
 
 
