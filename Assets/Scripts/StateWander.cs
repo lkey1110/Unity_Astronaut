@@ -23,6 +23,17 @@ namespace Lkey
         private string parWalk = "開關走路";
         private Rigidbody2D rig;
 
+        [SerializeField, Header("等待狀態")]
+        private StateIdle stateIdle;
+        [SerializeField, Header("是否回復等待")]
+        private bool startIdle;
+        [SerializeField, Header("等待狀態的隨機時間範圍")]
+        private Vector2 rangeWanderTime = new Vector2(0, 10);
+
+        private float timeWander;
+        private float timer;
+
+
         private void OnDrawGizmos()
         {
             Gizmos.color = new Color(0, 0.8f, 0.9f, 0.5f);
@@ -33,6 +44,7 @@ namespace Lkey
         private void Start()
         {
             rig = GetComponent<Rigidbody2D>();
+            timeWander = Random.Range(rangeWanderTime.x, rangeWanderTime.y);
         }
 
         public override State RunCurrentState()
@@ -52,7 +64,26 @@ namespace Lkey
 
             rig.velocity = new Vector2(direction * speed, rig.velocity.y);
             ani.SetBool(parWalk, true);
-            return this;
+
+
+            timer += Time.deltaTime;
+            print($"<color=#69f>計時器 : {timer}</color>");
+
+            if (timer >= timeWander) startIdle = true;
+
+            if (startIdle)
+            {
+                timer = 0;
+                startIdle = false;
+                timeWander = Random.Range(rangeWanderTime.x, rangeWanderTime.y);
+                rig.velocity = Vector3.zero;
+                return stateIdle;
+            }
+
+            else
+            {
+                return this;
+            }
         }
 
         [ContextMenu("取得角色原始座標")]

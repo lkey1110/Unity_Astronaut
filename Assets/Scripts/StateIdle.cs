@@ -28,6 +28,9 @@ namespace Lkey
 
             if (startWander)
             {
+                timer = 0;
+                startWander = false;
+                timeIdle = Random.Range(rangeIdleTime.x, rangeIdleTime.y);
                 return stateWander;
             }
 
