@@ -1,30 +1,18 @@
-﻿
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-namespace Lkey
+
+public class State : MonoBehaviour
 {
-    /// <summary>
-    /// 狀態抽象類別
-    /// </summary>
-    public abstract class State : MonoBehaviour
+    // Start is called before the first frame update
+    void Start()
     {
-        /// <summary>
-        /// 執行當前的狀態
-        /// </summary>
-        /// <teturns>當前的狀態</teturns>
-        public abstract State RunCurrentState();
+        
+    }
 
-        /// <summary>
-        /// 動畫控制元件(唯讀)
-        /// </summary>
-        protected Animator ani { get; private set; }
-
-        [field: SerializeField, Header("目標圖層")]
-        protected LayerMask layerTarget { get; private set; }
-
-        protected void Awake()
-        {
-            ani = GetComponent<Animator>();
-        }
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
-
