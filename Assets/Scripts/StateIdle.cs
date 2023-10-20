@@ -16,21 +16,19 @@ namespace Lkey
         private void Start()
         {
             timeIdle = Random.Range(rangeIdleTime.x, rangeIdleTime.y);
-            print($"<color=#d6f>隨機等待時間 : {timeIdle}</color>");
+           // print($"<color=#d6f>隨機等待時間 : {timeIdle}</color>");
         }
 
         public override State RunCurrentState()
         {
             timer += Time.deltaTime;
-            print($"<color=#69f>計時器 : {timer}</color>");
+           // print($"<color=#69f>計時器 : {timer}</color>");
 
             if (timer >= timeIdle) startWander = true;
 
             if (startWander)
             {
-                timer = 0;
-                startWander = false;
-                timeIdle = Random.Range(rangeIdleTime.x, rangeIdleTime.y);
+                ResetState();
                 return stateWander;
             }
 
@@ -38,6 +36,15 @@ namespace Lkey
             {
                 return this;
             }
+        }
+        /// <summary>
+        /// 重設狀態資料
+        /// </summary>
+        private void ResetState()
+        {
+            timer = 0;
+            startWander = false;
+            timeIdle = Random.Range(rangeIdleTime.x, rangeIdleTime.y);
         }
     }
 }
