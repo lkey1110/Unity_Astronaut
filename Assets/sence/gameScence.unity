@@ -731,7 +731,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534275885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.5520363, y: -0.52000093, z: -10}
+  m_LocalPosition: {x: 10.01, y: -0.52, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -991,7 +991,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1464799850, guid: 19859929e979780488162d45f32fefc8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1043,15 +1043,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91214edbf1442c043a37dfd0ae652699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <layerTarget>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
   pointOriginal: {x: -1.0131195, y: -2.62, z: 0}
   offsetLeft: -5
   offsetRight: 5
   speed: 1.5
+  direction: 1
   stateIdle: {fileID: 641777291}
   startIdle: 0
   rangeWanderTime: {x: 0, y: 10}
   trackSize: {x: 5, y: 3, z: 1}
   trackOffset: {x: 2.5, y: 0.2, z: 0}
+  stateTrack: {fileID: 641777290}
 --- !u!114 &641777290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1064,6 +1069,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fab61d1a52aa9c4788a6c82c1db9ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <layerTarget>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
+  speed: 3.5
+  stateWander: {fileID: 641777289}
+  attackSize: {x: 3, y: 3, z: 1}
+  attackOffset: {x: 1.5, y: 0.2, z: 0}
+  stateAttack: {fileID: 641777293}
 --- !u!114 &641777291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1076,9 +1089,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae582aab9262a014190341942c006150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <layerTarget>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
   stateWander: {fileID: 641777289}
   startWander: 0
   rangeIdleTime: {x: 0, y: 3}
+  stateTrack: {fileID: 641777290}
 --- !u!114 &641777292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,6 +1108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1b311751f81d043a0d524538644355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <layerTarget>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &641777293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,6 +1123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbcc62a2a9900be439f06df4c3670c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <layerTarget>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
+  timeSendAttackCheck: 0.7
+  timeAttackEnd: 1.5
+  stateTrack: {fileID: 641777290}
 --- !u!70 &641777294
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1154,7 +1180,7 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3be0c55123707084b82375909fb5f5c9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1275,7 +1301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843655689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.5, y: -0.52, z: -10}
+  m_LocalPosition: {x: 10.01, y: -0.52, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1481,7 +1507,7 @@ GameObject:
   - component: {fileID: 1112413356}
   - component: {fileID: 1112413355}
   - component: {fileID: 1112413358}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "\u592A\u7A7A\u54E1"
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1569,7 +1595,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112413351}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -15.5, y: -3.52, z: 0}
+  m_LocalPosition: {x: 10.01, y: -3.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1597,7 +1623,7 @@ MonoBehaviour:
   layerCheckGround:
     serializedVersion: 2
     m_Bits: 8
-  jumpPower: 419
+  jumpPower: 800
 --- !u!70 &1112413356
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1674,7 +1700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabBullet: {fileID: 6279857931538962208, guid: c32a8ddea55926f4b83b94c6d9d18434, type: 3}
   pointBullet: {fileID: 143923402}
-  powerBullet: 1000
+  powerBullet: 5000
 --- !u!1 &1150594830 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4415450311147778243, guid: fde1a94e834ec37469578b52243364bf, type: 3}

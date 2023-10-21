@@ -15,7 +15,7 @@ namespace Lkey
         /// <summary>
         /// 方向:右邊+1，左邊-1
         /// </summary>
-        private int direction = 1;
+        public int direction = 1;
 
         private Vector3 pointLeft => pointOriginal + Vector3.right * offsetLeft;
         private Vector3 pointRight => pointOriginal + Vector3.right * offsetRight;
@@ -35,6 +35,9 @@ namespace Lkey
         private Vector3 trackSize = Vector3.one;
         [SerializeField]
         private Vector3 trackOffset;
+
+        [SerializeField, Header("追蹤狀態")]
+        private StateTrack stateTrack;
 
         private float timeWander;
         private float timer;
@@ -59,14 +62,19 @@ namespace Lkey
         public override State RunCurrentState()
         {
             MoveAndFlip();
-            TrackTarget();
 
             timer += Time.deltaTime;
             //print($"<color=#69f>計時器 : {timer}</color>");
 
             if (timer >= timeWander) startIdle = true;
 
-            if (startIdle)
+            if(TrackTarget())
+            {
+                ResetState();
+                return stateTrack;
+            }
+
+            else if (startIdle)
             {
                 ResetState();
                 return stateIdle;
@@ -78,12 +86,20 @@ namespace Lkey
             }
         }
 
-        private bool TrackTarget()
-        {
-            Collider2D hit = Physics2D.OverlapBox(transform.position + transform.TransformDirection(trackOffset), trackSize, 0);
-            print(hit.name);
 
-            return hit;
+        /// <summary>
+        /// 追蹤目標物件
+        /// </summary>
+        /// <returns>是否有追蹤物件進入區域</returns>
+        public bool TrackTarget()
+        {
+            Collider2D hit = Physics2D.OverlapBox(transform.position + transform.TransformDirection(trackOffset), trackSize, 0, layerTarget);
+            //print(hit.name);
+            if (!hit) return false;
+
+            if (hit.transform.position.x > pointLeft.x && hit.transform.position.x < pointRight.x) return hit;
+
+            return false;
         }
 
         /// <summary>
@@ -95,6 +111,7 @@ namespace Lkey
             startIdle = false;
             timeWander = Random.Range(rangeWanderTime.x, rangeWanderTime.y);
             rig.velocity = Vector3.zero;
+            ani.SetBool(parWalk, false);
         }
 
         /// <summary>
