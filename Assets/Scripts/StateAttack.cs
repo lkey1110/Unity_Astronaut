@@ -13,6 +13,12 @@ namespace Lkey
         private string parAttack = "觸發攻擊";
         private float timer;
         private bool canSendAttack = true;
+        private DamageSystem damageSystem;
+
+        private void Start()
+        {
+            damageSystem = GameObject.Find("太空員").GetComponent<DamageSystem>();
+        }
         public override State RunCurrentState()
         {
             if (timer == 0)
@@ -27,6 +33,7 @@ namespace Lkey
                     if (stateTrack.AttackTarget())
                     {
                         print("<color=#69f>擊中玩家!</color>");
+                        damageSystem.Damage(30);
                     }
                 }
 
