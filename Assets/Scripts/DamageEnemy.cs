@@ -1,4 +1,6 @@
-﻿using Lkey;
+﻿using Cinemachine;
+using Lkey;
+using LKey;
 using UnityEngine;
 namespace Lkey
 {
@@ -20,6 +22,7 @@ namespace Lkey
         private StateManager stateManger; //不能取stateManager跟狀蓋管理名稱重複
         private Rigidbody2D rig;
         private Collider2D col;
+        private CinemachineImpulseSource impulseSource;
 
         private void Start()
         {
@@ -27,6 +30,7 @@ namespace Lkey
             stateManger = GetComponent<StateManager>();
             rig = GetComponent<Rigidbody2D>();
             col = GetComponent<Collider2D>();
+            impulseSource = FindObjectOfType<CinemachineImpulseSource>();
         }
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -36,6 +40,9 @@ namespace Lkey
                 Damage(bulletAttack);
                 Destroy(collision.gameObject);
                 stateManager.stateDefault = stateHit; //受傷時狀態改為受傷
+                AudioClip sound = SoundManager.instance.soundEnemyHit;
+                SoundManager.instance.PlaySound(sound, 0.7f, 1.7f);
+                impulseSource.GenerateImpulse(bulletAttack);
             }
         }
         protected override void Dead()
@@ -46,8 +53,10 @@ namespace Lkey
             col.enabled = false;
             rig.velocity = Vector3.zero;
             GameObject tempItem = Instantiate(prefabItem, transform.transform.position + Vector3.up, Quaternion.identity);
-            tempItem.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, 100));
+            tempItem.GetComponent<Rigidbody2D>().AddForce(new Vector2(50, 500));
             //Destroy(gameObject);
+            AudioClip sound = SoundManager.instance.soundEnemyDead;
+            SoundManager.instance.PlaySound(sound, 0.7f, 1.7f);
         }
 
 

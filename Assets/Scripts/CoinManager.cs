@@ -1,5 +1,6 @@
 ﻿
 using Fungus;
+using LKey;
 using TMPro;
 using UnityEngine;
 
@@ -26,10 +27,18 @@ namespace Lkey
         }
         private void EatCoin(GameObject coin)
         {
+            AudioClip sound = SoundManager.instance.soundCoin;
+            SoundManager.instance.PlaySound(sound, 0.7f, 1.7f);
+
             Destroy(coin);
             textCoin.text = $"金幣數量:{++coinCurrent}/{coinTotal}";
 
-            if (coinCurrent >= coinTotal) flowchatGM.SendFungusMessage("遊戲勝利");
+            if (coinCurrent >= coinTotal)
+            {
+                AudioClip soundWin = SoundManager.instance.soundWin;
+                SoundManager.instance.PlaySound(sound, 0.7f, 1.7f);
+                flowchatGM.SendFungusMessage("遊戲勝利");
+            }
         }
     }
 

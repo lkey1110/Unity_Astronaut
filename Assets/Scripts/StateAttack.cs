@@ -59,6 +59,7 @@ namespace Lkey
         public void ResetAttackState()
         {
             timer = 0;
+            canSendAttack = true;
         }
     }
 }
