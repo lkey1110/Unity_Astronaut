@@ -9,6 +9,8 @@ namespace Lkey
         private float timeAttackEnd = 1.5f;
         [SerializeField, Header("追蹤狀態")]
         private StateTrack stateTrack;
+        [SerializeField, Header("敵人資料")]
+        private DataBasic data;
 
         private string parAttack = "觸發攻擊";
         private float timer;
@@ -32,8 +34,8 @@ namespace Lkey
                     canSendAttack = false;
                     if (stateTrack.AttackTarget())
                     {
-                        print("<color=#69f>擊中玩家!</color>");
-                        damageSystem.Damage(30);
+                        //print("<color=#69f>擊中玩家!</color>");
+                        damageSystem.Damage(data.attack);
                     }
                 }
 

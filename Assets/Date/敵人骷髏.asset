@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: "\u6575\u4EBA\u9AB7\u9ACF"
   m_EditorClassIdentifier: 
   hp: 100
+  attack: 55

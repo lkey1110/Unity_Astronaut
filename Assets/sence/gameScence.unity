@@ -1154,6 +1154,7 @@ GameObject:
   - component: {fileID: 641777290}
   - component: {fileID: 641777289}
   - component: {fileID: 641777288}
+  - component: {fileID: 641777296}
   m_Layer: 0
   m_Name: "\u9AB7\u9ACF"
   m_TagString: Untagged
@@ -1360,6 +1361,7 @@ MonoBehaviour:
   timeSendAttackCheck: 0.7
   timeAttackEnd: 1.5
   stateTrack: {fileID: 641777290}
+  data: {fileID: 11400000, guid: af37f00eb8c51bb4281fb20913b2621c, type: 2}
 --- !u!70 &641777294
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1422,6 +1424,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &641777296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641777284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf942e290105794f8f45b8b89cc0621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: af37f00eb8c51bb4281fb20913b2621c, type: 2}
+  prefabDamage: {fileID: 4878325549639195456, guid: ef47267146f0f384c9f093f2d631f2f2, type: 3}
+  stateManager: {fileID: 641777288}
+  stateHit: {fileID: 641777292}
 --- !u!1 &661364316
 GameObject:
   m_ObjectHideFlags: 0
@@ -3132,7 +3150,7 @@ MonoBehaviour:
   scrollPos: {x: 348.0484, y: 337.75485}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 241
+  blockViewHeight: 421
   zoom: 0.31000045
   scrollViewRect:
     serializedVersion: 2
