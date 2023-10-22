@@ -12,8 +12,8 @@ namespace Lkey
         [SerializeField, Header("傷害值文字預製物")]
         private GameObject prefabDamage;
 
-        private float hp;
-        private float hpMax;
+        protected float hp;
+        protected float hpMax;
 
         private void Awake()
         {
@@ -24,7 +24,7 @@ namespace Lkey
         /// 受傷
         /// </summary>
         /// <param name="getDamage">受到的傷害</param>
-        public void Damage(float getDamage)
+        public virtual void Damage(float getDamage)
         {
             hp -= getDamage;
 
@@ -37,7 +37,7 @@ namespace Lkey
         /// <summary>
         /// 死亡
         /// </summary>
-        private void Dead()
+        protected virtual void Dead()
         {
             
         }
