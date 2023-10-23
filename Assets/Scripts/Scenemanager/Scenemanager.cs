@@ -1,4 +1,4 @@
-﻿
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
 namespace Lkey
@@ -20,7 +20,7 @@ namespace Lkey
         /// <summary>
         /// 透過字串切換場景
         /// </summary>
-        /// <param name="nameScene">場景名稱</param>
+        /// <param name="nameScene">場景名稱</param> 
         public void ChangeScene(string nameScene)
         {
             nameSceneToChange = nameScene;
@@ -28,8 +28,8 @@ namespace Lkey
         }
         private void DelayChangeScene()
         {
-            print("切換場景");
-            UnityEngine.SceneManagement.SceneManager.LoadScene("nameScene");
+            //print("切換場景");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("gameScence");
             //UnityEngine.SceneManagement.SceneManager.LoadScene(1)
             
         }
@@ -44,7 +44,7 @@ namespace Lkey
 
         private void DelayQuit()
         {
-            print("退出遊戲");
+            //print("退出遊戲");
             Application.Quit();
             
         }
