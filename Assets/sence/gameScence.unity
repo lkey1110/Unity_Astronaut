@@ -998,7 +998,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534275885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.834976, y: -1.119997, z: -10}
+  m_LocalPosition: {x: -4.9521046, y: -1.119997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2936,7 +2936,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1397063045}
   selectedCommands:
-  - {fileID: 1397063052}
+  - {fileID: 1397063043}
   variables: []
   description: 
   stepPause: 0
@@ -22355,6 +22355,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SayDialog
       objectReference: {fileID: 0}
+    - target: {fileID: 11431470, guid: 8a005a9e0713f4cc1b5ad29fb07657d3, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b5cf3c00c46aee2419b11312e8965f1a, type: 3}
     - target: {fileID: 11488896, guid: 8a005a9e0713f4cc1b5ad29fb07657d3, type: 3}
       propertyPath: m_Text
       value: "\u4F60\u597D\u554A\uFF0C\u65C5\u884C\u8005\n"
@@ -22362,7 +22366,7 @@ PrefabInstance:
     - target: {fileID: 11488896, guid: 8a005a9e0713f4cc1b5ad29fb07657d3, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 43bce127d27b74a66a29b68d0de90ddb, type: 3}
+      objectReference: {fileID: 12800000, guid: b5cf3c00c46aee2419b11312e8965f1a, type: 3}
     - target: {fileID: 11488896, guid: 8a005a9e0713f4cc1b5ad29fb07657d3, type: 3}
       propertyPath: m_FontData.m_MinSize
       value: 0
@@ -22379,6 +22383,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u96F7\u5229\u53F2\u8003\u7279"
       objectReference: {fileID: 0}
+    - target: {fileID: 11488900, guid: 8a005a9e0713f4cc1b5ad29fb07657d3, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b5cf3c00c46aee2419b11312e8965f1a, type: 3}
     - target: {fileID: 11488904, guid: 8a005a9e0713f4cc1b5ad29fb07657d3, type: 3}
       propertyPath: m_Color.b
       value: 1
